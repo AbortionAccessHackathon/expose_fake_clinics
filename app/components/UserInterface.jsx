@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class UserInterface extends Component {
   constructor (props) {
@@ -20,8 +20,21 @@ export default class UserInterface extends Component {
       <div>
         Yo, Yo, I'm a div
       </div>
+      <div>
+        <RaisedButton
+          label="Button1"
+          style={
+            margin:12,
+            background-color: #4CAF50,
+            border: 2px solid #0000FF;
+          }
+          />
+        <RaisedButton
+          label="Button2"
+          secondary="true"
+          />
+      </div>
+
     )
   }
 }
-
-
