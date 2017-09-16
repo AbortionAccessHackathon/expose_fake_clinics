@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 
+const style = {
+  button: {
+    margin:12,
+    background-color: #4CAF50,
+    border: 2px solid #0000FF;
+  }
+}
+
 export default class UserInterface extends Component {
   constructor (props) {
     super(props)
@@ -15,7 +23,6 @@ export default class UserInterface extends Component {
 
   render() {
     if (!this.state) { return null }
-
     return (
       <div>
         Yo, Yo, I'm a div
@@ -23,27 +30,15 @@ export default class UserInterface extends Component {
       <div>
         <RaisedButton
           label="Button1"
-          style={
-            margin:12,
-            background-color: #4CAF50,
-            border: 2px solid #0000FF;
-          }
+          style={style.button}
           />
           <RaisedButton
-            label="Button1"
-            style={
-              margin:12,
-              background-color: #4CAF50,
-              border: 2px solid #0000FF;
-            }
+            label="Button2"
+            style={style.button}
             />
           <RaisedButton
-            label="Button1"
-              style={
-                margin:12,
-                background-color: #4CAF50,
-                border: 2px solid #0000FF;
-              }
+            label="Button3"
+              style={style.button}
               />
       </div>
 
