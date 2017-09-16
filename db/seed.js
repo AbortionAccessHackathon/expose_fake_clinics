@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
-    , {User, Thing, Favorite, Promise} = db
+    , {User, Thing, Favorite, Promise, Center, Review} = db
     , {mapValues} = require('lodash')
 
 function seedEverything() {

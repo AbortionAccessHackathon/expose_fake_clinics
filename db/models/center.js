@@ -2,23 +2,30 @@
 
 const {TEXT, FLOAT} = require('sequelize');
 
-module.exports = db => db.define('crisisCenters', {
+module.exports = db => db.define('centers', {
     name: {
-        type: sequelize.TEXT,
+        type: TEXT,
         allowNull: false,
         validate: {
             notEmpty: true
         }
     },
     address: {
-        type: sequelize.TEXT,
+        type: TEXT,
         allowNull: false,
         validate: {
             notEmpty: true
         }
     },
+    url: {
+        type: TEXT,
+        allownull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
     starRating: {
-        type: sequelize.FLOAT,
+        type: FLOAT,
         allowNull: false,
         validate: {
             min: 0,
@@ -27,7 +34,7 @@ module.exports = db => db.define('crisisCenters', {
     },
 })
 
-module.exports.associations = (CrisisCenter, {Review}) => {
-    CrisisCenter.hasMany(Review)
+module.exports.associations = (Center, {Review}) => {
+    Center.hasMany(Review)
 }
   
