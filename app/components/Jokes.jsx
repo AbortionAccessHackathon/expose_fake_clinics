@@ -36,5 +36,3 @@ export default class BonesJokes extends Component {
     )
   }
 }
-
-
