@@ -5,6 +5,8 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme.js'
 import {GridList, GridTile} from 'material-ui/GridList';
 import Iframe from 'react-iframe';
 import UserInterface from './UserInterface.jsx'
+import directionNodes from './user-interface'
+import axios from 'axios'
 
 const styles = {
   root: {
@@ -24,16 +26,31 @@ export default class BonesJokes extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      pageTitle: 'Start Now'
+      pageTitle: 'Start Now',
+      currentDirectionNode: directionNodes.verifyClinicPage({name: 'test', address: '123 address st'})
     }
   }
+
   componentDidMount() {
+    axios.get('/api/centers')
+    .then((response) => {
+      console.log('PIKACHU', response);
+    })
+    .catch((error) => {
+      console.log('PSYDUCK', error);
+    });
   }
 
+  setCurrentDirectionNode(nodeName) {
 
+  }
 
   render() {
+    const currentNode = this.state.currentDirectionNode || {}
+    const setCurrentNode = this.setCurrentDirectionNode
     if (!this.state) { return null }
+
+    console.log('CHARMANDER', currentNode)
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
@@ -53,7 +70,11 @@ export default class BonesJokes extends Component {
               </div>
             </GridTile>
             <GridTile style={styles.gridTitleRight} cols={1}>
-             <UserInterface></UserInterface>
+              <UserInterface
+                buttonData={currentNode.buttons}
+                directions={currentNode.text}
+                setCurrentNode={setCurrentNode}
+              />
             </GridTile>
          </GridList>
         </div>

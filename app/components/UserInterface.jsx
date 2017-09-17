@@ -52,16 +52,16 @@ export default class UserInterface extends Component {
       pageTitle: 'Start Now'
     }
   }
+
   componentDidMount() {
   }
-
-
 
   render() {
     const {
       buttonData = [],
       directions = ''
     } = this.props
+
     if (!this.state) { return null}
     const fakeButtonData = [
       {
@@ -76,14 +76,14 @@ export default class UserInterface extends Component {
     return (
       <div>
         <div>
-          Yo, Yo, I'm a div
+          {directions}
         </div>
         <GridList
           style={style.buttonWrapper}
-          cols={fakeButtonData.length}
+          cols={fakeButtonData && fakeButtonData.length}
         >
           {
-            fakeButtonData.map((button, index) =>
+            buttonData.map((button, index) =>
               createButton(index, button.label, button.link))
           }
         </GridList>

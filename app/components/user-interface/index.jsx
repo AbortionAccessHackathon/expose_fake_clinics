@@ -1,6 +1,6 @@
 const verifyClinicPage = ({name, address}) => {
     return {
-        text: `In the window on the right you should see the page for ${name}.<br/>Is this the page for ${name} at ${address}?`,
+        text: `In the window on the right you should see the page for ${name}. Is this the page for ${name} at ${address}?`,
         buttons: [
             {
                 label: 'yes',
@@ -16,7 +16,7 @@ const verifyClinicPage = ({name, address}) => {
 
 const sortReviews = () => {
     return {
-        text: `Scroll down to where the reviews start on the page. Click the 'Stort by' dropdown and choose the 'Lowest Rated' option.<br/>Are there negative reviews for this CPC?`,
+        text: `Scroll down to where the reviews start on the page. Click the 'Stort by' dropdown and choose the 'Lowest Rated' option. Are there negative reviews for this CPC?`,
         buttons: [
             {
                 label: 'yes',
@@ -32,7 +32,7 @@ const sortReviews = () => {
 
 const upvoteReviews = () => {
     return {
-        text: `Find reviews that mention personal experience about services provided. Look for reviews that shrare information about services the clinic does, and doesn't provide and upvote them.<br/>Click below if you'd like to look at another clinic.`,
+        text: `Find reviews that mention personal experience about services provided. Look for reviews that shrare information about services the clinic does, and doesn't provide and upvote them. Click below if you'd like to look at another clinic.`,
         buttons: [
             {
                 label: 'yes',
