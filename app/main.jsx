@@ -17,28 +17,35 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import TitleBar from './components/TitleBar'
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider.js';
+import getMuiTheme from 'material-ui/styles/getMuiTheme.js';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme.js'
+
+
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
     <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
+      <TitleBar></TitleBar>
       {children}
     </div>
 )
 
 render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
-      </Route>
-      <Route path='*' component={NotFound} />
-    </Router>
-  </Provider>,
+  <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={ExampleApp}>
+          <IndexRedirect to="/jokes" />
+          <Route path="/jokes" component={Jokes} />
+        </Route>
+        <Route path='*' component={NotFound} />
+      </Router>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('main')
 )

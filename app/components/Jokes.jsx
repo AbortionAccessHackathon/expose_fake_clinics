@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider.js';
-import getMuiTheme from 'material-ui/styles/getMuiTheme.js';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme.js'
 import {GridList, GridTile} from 'material-ui/GridList';
 import Iframe from 'react-iframe';
 import UserInterface from './UserInterface.jsx'
@@ -13,12 +10,15 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: '20px'
+    marginTop: '20px',
+    padding: '16px'
   },
   gridList: {
     width: 800,
     height: 900,
     overflowY: 'auto',
+  },
+  gridTileLeft: {
   }
 };
 
@@ -79,10 +79,10 @@ export default class BonesJokes extends Component {
     if (!this.state) { return null }
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+
         <div style={styles.root}>
           <GridList padding={1} cols={3} cellHeight='auto'>
-            <GridTile style={styles.gridTitleLeft}  cols={2}>
+            <GridTile style={styles.gridTileLeft}  cols={2}>
               <Iframe
                 url={currentCenter.yelpUrl}
                 width="450px"
@@ -90,6 +90,7 @@ export default class BonesJokes extends Component {
                 display="initial"
                 position="relative"
                 allowFullScreen
+                styles={{border: '1px solid black'}}
               />
               <div>
                 <h2>Avail NYC</h2>
@@ -104,7 +105,6 @@ export default class BonesJokes extends Component {
             </GridTile>
          </GridList>
         </div>
-      </MuiThemeProvider>
     )
   }
 }
