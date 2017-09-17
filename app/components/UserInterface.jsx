@@ -23,27 +23,27 @@ const style = {
     height: 900,
     overflowY: 'auto',
   },
+  buttonWrapper: {
+    width: '100%'
+  }
 }
 
 const buttonData = [];
 
 const createButton = (index, label, link) => (
-  <div key={index} style={style.root}>
-    <GridTile
-      cols={buttonData.length}
-      cellHeight={100}
-      padding={20}
-      style={style.gridTile}>
-        <RaisedButton
-          link=''
-          style={style.button}
-        >
-        {label}
-        </RaisedButton>
-    </GridTile>
-  </div>
+  <GridTile
+    cellHeight={100}
+    padding={20}
+    key={index}
+    style={style.gridTile}
+  >
+      <RaisedButton
+        style={style.button}
+      >
+      {label}
+      </RaisedButton>
+  </GridTile>
 );
-
 
 export default class UserInterface extends Component {
   constructor (props) {
@@ -59,7 +59,8 @@ export default class UserInterface extends Component {
 
   render() {
     const {
-      buttonData = []
+      buttonData = [],
+      directions = ''
     } = this.props
     if (!this.state) { return null}
     const fakeButtonData = [
@@ -78,13 +79,13 @@ export default class UserInterface extends Component {
           Yo, Yo, I'm a div
         </div>
         <GridList
-          style={style.gridList}>
-          <div>
-            {
-              fakeButtonData.map((button, index) =>
-                createButton(index, button.label, button.link))
-            }
-          </div>
+          style={style.buttonWrapper}
+          cols={fakeButtonData.length}
+        >
+          {
+            fakeButtonData.map((button, index) =>
+              createButton(index, button.label, button.link))
+          }
         </GridList>
       </div>
     )
