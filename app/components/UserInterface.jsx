@@ -4,10 +4,44 @@ import RaisedButton from 'material-ui/RaisedButton';
 const style = {
   button: {
     margin:12,
-    backgroundColor: '#4CAF50',
-    border: '2px solid #0000FF'
-  }
+    background-color: #4CAF50,
+    border: 2px solid #0000FF;
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
+  },
+  gridTile: {
+    width: 200,
+    height: 150,
+    overflowY: 'auto',
+  },
+  gridList: {
+    width: 800,
+    height: 900,
+    overflowY: 'auto',
+  },
 }
+
+const buttonData = [];
+
+const createButton = (index, label, link) => (
+  <div key={index} style={style.root}>
+    <GridTile
+      cols={buttonData.length}
+      cellHeight={100}
+      padding={20}
+      style={style.gridTile}>
+        <RaisedButton
+          label=
+          link=
+          style={style.button}
+          />
+      </GridList>
+    </div>
+);
+
 
 export default class UserInterface extends Component {
   constructor (props) {
@@ -22,26 +56,28 @@ export default class UserInterface extends Component {
 
 
   render() {
-    if (!this.state) { return null }
+    if (!this.state) { return null}
+    const fakeButtonData = [
+      {
+        label:'Google'
+        link:'http://www.google.com'
+      },
+      {
+        label:'Facebook'
+        link:'http://www.facebook.com'
+      },
+    ];
     return (
       <div>
-        <h2>Yo, Yo, I'm a div</h2>
-        <div>
-          <RaisedButton
-            label="Button1"
-            style={style.button}
-          />
-          <RaisedButton
-            label="Button2"
-            style={style.button}
-          />
-          <RaisedButton
-            label="Button3"
-            style={style.button}
-          />
-        </div>
+        Yo, Yo, I'm a div
       </div>
-
+      <GridList
+        style={style.gridList}>
+        <div>
+          {this.props.buttonData.map((button, index) => createButton(
+            index, button.label, button.link)}
+        </div>
+      </GridList>
     )
   }
 }
