@@ -4,12 +4,12 @@ const {TEXT} = require('sequelize');
 
 module.exports = db => db.define('reviews', {
     content: {
-        type: sequelize.TEXT,
+        type: TEXT,
         allowNull: false
     },
 })
 
-module.exports.associations = (Review, {CrisisCenter}) => {
-    Review.belongsTo(CrisisCenter)
+module.exports.associations = (Review, {Center}) => {
+    Review.belongsTo(Center)
 }
   
