@@ -78,9 +78,6 @@ export default class UserInterface extends Component {
             index, button.label, button.link)}
         </div>
       </GridList>
-
-
-
     )
   }
 }
