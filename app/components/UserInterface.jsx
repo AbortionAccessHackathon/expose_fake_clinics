@@ -28,9 +28,8 @@ const style = {
   }
 }
 
-const buttonData = [];
-
-const createButton = (index, label, link) => (
+const createButton = (onClickFunc, index, label, nextNode) => {
+  return (
   <GridTile
     cellHeight={100}
     padding={20}
@@ -39,11 +38,12 @@ const createButton = (index, label, link) => (
   >
       <RaisedButton
         style={style.button}
+        onClick={() => onClickFunc(nextNode)}
       >
       {label}
       </RaisedButton>
   </GridTile>
-);
+)};
 
 export default class UserInterface extends Component {
   constructor (props) {
@@ -53,26 +53,15 @@ export default class UserInterface extends Component {
     }
   }
 
-  componentDidMount() {
-  }
-
   render() {
     const {
       buttonData = [],
-      directions = ''
+      directions = '',
+      setCurrentNode
     } = this.props
 
     if (!this.state) { return null}
-    const fakeButtonData = [
-      {
-        label:'Google',
-        link:'http://www.google.com'
-      },
-      {
-        label:'Facebook',
-        link:'http://www.facebook.com'
-      },
-    ];
+
     return (
       <div>
         <div>
@@ -80,11 +69,16 @@ export default class UserInterface extends Component {
         </div>
         <GridList
           style={style.buttonWrapper}
-          cols={fakeButtonData && fakeButtonData.length}
+          cols={buttonData && buttonData.length}
         >
           {
             buttonData.map((button, index) =>
-              createButton(index, button.label, button.link))
+              createButton(
+                setCurrentNode,
+                index,
+                button.label,
+                button.nextPage
+              ))
           }
         </GridList>
       </div>

@@ -28,28 +28,48 @@ export default class BonesJokes extends Component {
     this.state = {
       pageTitle: 'Start Now',
       currentDirectionNode: directionNodes.verifyClinicPage({name: 'test', address: '123 address st'}),
-      currentCenter: {}
+      currentCenter: {},
+      centers: []
     }
+
+    this.setCurrentDirectionNode = this.setCurrentDirectionNode.bind(this)
   }
 
   componentDidMount() {
     axios.get('/api/centers')
     .then((response) => {
       const centers = response.data
-      const randomIndex = Math.floor(Math.random() * (centers.length))
-      const randomClinic = centers[randomIndex]
+      const randomCenter = this.getRandomCenter(centers)
       this.setState({
-        currentDirectionNode: directionNodes.verifyClinicPage(randomClinic),
-        currentCenter: randomClinic
+        currentDirectionNode: directionNodes.verifyClinicPage(randomCenter),
+        currentCenter: randomCenter,
+        centers
       })
     })
     .catch((error) => {
-      console.log('PSYDUCK', error);
+      console.log(error);
     });
   }
 
-  setCurrentDirectionNode(nodeName) {
+  getRandomCenter(centers) {
+    const randomIndex = Math.floor(Math.random() * (centers.length))
+    return centers[randomIndex]
+  }
 
+  setCurrentDirectionNode(nodeName) {
+    console.log('DIGDUG', nodeName)
+    if (nodeName === 'new') {
+      const newCenter = this.getRandomCenter(this.state.centers)
+      nodeName = directionNodes.verifyClinicPage(newCenter)
+      this.setState({
+        currentCenter: newCenter,
+        currentDirectionNode: directionNodes.verifyClinicPage(newCenter)
+      })
+    } else {
+      this.setState({
+        currentDirectionNode: directionNodes[nodeName](this.currentCenter)
+      })
+    }
   }
 
   render() {

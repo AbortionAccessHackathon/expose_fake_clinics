@@ -8,7 +8,7 @@ const verifyClinicPage = ({name, address}) => {
             },
             {
                 label: 'no',
-                nextPage: 'verifyClinicPage'
+                nextPage: 'new'
             }
         ]
     }
@@ -24,7 +24,7 @@ const sortReviews = () => {
             },
             {
                 label: 'no',
-                nextPage: 'verifyClinicPage'
+                nextPage: 'new'
             }
         ]
     }
@@ -36,7 +36,7 @@ const upvoteReviews = () => {
         buttons: [
             {
                 label: 'yes',
-                nextPage: 'verifyClinicPage'
+                nextPage: 'new'
             }
         ]
     }
