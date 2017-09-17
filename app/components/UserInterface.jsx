@@ -35,10 +35,11 @@ const createButton = (index, label, link) => (
       padding={20}
       style={style.gridTile}>
         <RaisedButton
-          label=''
           link=''
           style={style.button}
-        />
+        >
+        {label}
+        </RaisedButton>
     </GridTile>
   </div>
 );
@@ -80,7 +81,7 @@ export default class UserInterface extends Component {
           style={style.gridList}>
           <div>
             {
-              buttonData.map((button, index) =>
+              fakeButtonData.map((button, index) =>
                 createButton(index, button.label, button.link))
             }
           </div>
