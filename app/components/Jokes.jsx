@@ -17,10 +17,6 @@ const styles = {
     width: 800,
     height: 900,
     overflowY: 'auto',
-  },
-  gridTitleLeft: {
-  },
-  gridTitleRight: {
   }
 };
 

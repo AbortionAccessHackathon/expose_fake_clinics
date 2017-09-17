@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
+import {GridList, GridTile} from 'material-ui/GridList';
 
 const style = {
   button: {
     margin:12,
-    background-color: #4CAF50,
-    border: 2px solid #0000FF;
+    backgrounColor: '#4CAF50',
+    border: '2px solid #0000FF'
   },
   root: {
     display: 'flex',
@@ -34,12 +35,12 @@ const createButton = (index, label, link) => (
       padding={20}
       style={style.gridTile}>
         <RaisedButton
-          label=
-          link=
+          label=''
+          link=''
           style={style.button}
-          />
-      </GridList>
-    </div>
+        />
+    </GridTile>
+  </div>
 );
 
 
@@ -56,28 +57,35 @@ export default class UserInterface extends Component {
 
 
   render() {
+    const {
+      buttonData = []
+    } = this.props
     if (!this.state) { return null}
     const fakeButtonData = [
       {
-        label:'Google'
+        label:'Google',
         link:'http://www.google.com'
       },
       {
-        label:'Facebook'
+        label:'Facebook',
         link:'http://www.facebook.com'
       },
     ];
     return (
       <div>
-        Yo, Yo, I'm a div
-      </div>
-      <GridList
-        style={style.gridList}>
         <div>
-          {this.props.buttonData.map((button, index) => createButton(
-            index, button.label, button.link)}
+          Yo, Yo, I'm a div
         </div>
-      </GridList>
+        <GridList
+          style={style.gridList}>
+          <div>
+            {
+              buttonData.map((button, index) =>
+                createButton(index, button.label, button.link))
+            }
+          </div>
+        </GridList>
+      </div>
     )
   }
 }
