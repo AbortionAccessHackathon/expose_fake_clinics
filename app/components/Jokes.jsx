@@ -10,13 +10,18 @@ const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: '20px'
   },
   gridList: {
     width: 800,
     height: 900,
     overflowY: 'auto',
   },
+  gridTitleLeft: {
+  },
+  gridTitleRight: {
+  }
 };
 
 export default class BonesJokes extends Component {
@@ -37,8 +42,8 @@ export default class BonesJokes extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <div style={styles.root}>
-          <GridList>
-            <GridTile>
+          <GridList padding={1} cols={3} cellHeight='auto'>
+            <GridTile style={styles.gridTitleLeft}  cols={2}>
               <Iframe
                 url="https://www.yelp.com/biz/avail-nyc-new-york"
                 width="450px"
@@ -51,7 +56,7 @@ export default class BonesJokes extends Component {
                 <h2>Avail NYC</h2>
               </div>
             </GridTile>
-            <GridTile>
+            <GridTile style={styles.gridTitleRight} cols={1}>
              <UserInterface></UserInterface>
             </GridTile>
          </GridList>
