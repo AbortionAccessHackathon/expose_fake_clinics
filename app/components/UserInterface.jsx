@@ -25,21 +25,21 @@ export default class UserInterface extends Component {
     if (!this.state) { return null }
     return (
       <div>
-        Yo, Yo, I'm a div
-      </div>
-      <div>
-        <RaisedButton
-          label="Button1"
-          style={style.button}
+        <h2>Yo, Yo, I'm a div</h2>
+        <div>
+          <RaisedButton
+            label="Button1"
+            style={style.button}
           />
           <RaisedButton
             label="Button2"
             style={style.button}
-            />
+          />
           <RaisedButton
             label="Button3"
-              style={style.button}
-              />
+            style={style.button}
+          />
+        </div>
       </div>
 
     )
