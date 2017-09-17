@@ -87,7 +87,7 @@ export default class BonesJokes extends Component {
           <GridList padding={1} cols={3} cellHeight='auto'>
             <GridTile style={styles.gridTileLeft}  cols={2}>
               <Iframe
-                url="https://www.yelp.com/biz/avail-nyc-new-york"
+                url={currentCenter.yelpUrl}
                 width="100%"
                 height="100%"
                 display="initial"
