@@ -23,27 +23,27 @@ const style = {
     height: 900,
     overflowY: 'auto',
   },
+  buttonWrapper: {
+    width: '100%'
+  }
 }
 
-const buttonData = [];
-
-const createButton = (index, label, link) => (
-  <div key={index} style={style.root}>
-    <GridTile
-      cols={buttonData.length}
-      cellHeight={100}
-      padding={20}
-      style={style.gridTile}>
-        <RaisedButton
-          link=''
-          style={style.button}
-        >
-        {label}
-        </RaisedButton>
-    </GridTile>
-  </div>
-);
-
+const createButton = (onClickFunc, index, label, nextNode) => {
+  return (
+  <GridTile
+    cellHeight={100}
+    padding={20}
+    key={index}
+    style={style.gridTile}
+  >
+      <RaisedButton
+        style={style.button}
+        onClick={() => onClickFunc(nextNode)}
+      >
+      {label}
+      </RaisedButton>
+  </GridTile>
+)};
 
 export default class UserInterface extends Component {
   constructor (props) {
@@ -52,39 +52,34 @@ export default class UserInterface extends Component {
       pageTitle: 'Start Now'
     }
   }
-  componentDidMount() {
-  }
-
-
 
   render() {
     const {
-      buttonData = []
+      buttonData = [],
+      directions = '',
+      setCurrentNode
     } = this.props
+
     if (!this.state) { return null}
-    const fakeButtonData = [
-      {
-        label:'Google',
-        link:'http://www.google.com'
-      },
-      {
-        label:'Facebook',
-        link:'http://www.facebook.com'
-      },
-    ];
+
     return (
       <div>
         <div>
-          Yo, Yo, I'm a div
+          {directions}
         </div>
         <GridList
-          style={style.gridList}>
-          <div>
-            {
-              fakeButtonData.map((button, index) =>
-                createButton(index, button.label, button.link))
-            }
-          </div>
+          style={style.buttonWrapper}
+          cols={buttonData && buttonData.length}
+        >
+          {
+            buttonData.map((button, index) =>
+              createButton(
+                setCurrentNode,
+                index,
+                button.label,
+                button.nextPage
+              ))
+          }
         </GridList>
       </div>
     )
