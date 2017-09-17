@@ -5,13 +5,12 @@ import {GridList, GridTile} from 'material-ui/GridList';
 const style = {
   button: {
     margin:12,
-    backgrounColor: '#4CAF50',
-    border: '2px solid #0000FF'
+    border: '2px solid #00c4cc'
   },
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
   gridTile: {
     width: 200,
@@ -24,7 +23,11 @@ const style = {
     overflowY: 'auto',
   },
   buttonWrapper: {
-    width: '100%'
+    width: '100%',
+    margin: 'auto'
+  },
+  wrapper: {
+    fontSize: '2em'
   }
 }
 
@@ -63,10 +66,8 @@ export default class UserInterface extends Component {
     if (!this.state) { return null}
 
     return (
-      <div>
-        <div>
+      <div style={style.wrapper}>
           {directions}
-        </div>
         <GridList
           style={style.buttonWrapper}
           cols={buttonData && buttonData.length}

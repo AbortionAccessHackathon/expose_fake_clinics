@@ -13,12 +13,17 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: '20px'
+    marginTop: '20px',
+    height: '700px',
+    width: '100%'
   },
   gridList: {
     width: 800,
     height: 900,
     overflowY: 'auto',
+  },
+  userInterfaceWrapper: {
+    padding: '25px'
   }
 };
 
@@ -84,9 +89,9 @@ export default class BonesJokes extends Component {
           <GridList padding={1} cols={3} cellHeight='auto'>
             <GridTile style={styles.gridTitleLeft}  cols={2}>
               <Iframe
-                url={currentCenter.yelpUrl}
-                width="450px"
-                height="450px"
+                url="https://www.yelp.com/biz/avail-nyc-new-york"
+                width="100%"
+                height="100%"
                 display="initial"
                 position="relative"
                 allowFullScreen
@@ -95,7 +100,7 @@ export default class BonesJokes extends Component {
                 <h2>Avail NYC</h2>
               </div>
             </GridTile>
-            <GridTile style={styles.gridTitleRight} cols={1}>
+            <GridTile style={styles.userInterfaceWrapper} cols={1}>
               <UserInterface
                 buttonData={currentNode.buttons}
                 directions={currentNode.text}
