@@ -10,6 +10,5 @@ module.exports = require('express').Router()
     .get('/',
         (req, res, next) => 
             Center.findAll()
-                .then(centers => res.json(centers)
+                .then(centers => res.json(centers))
                 .catch(next))
-    )

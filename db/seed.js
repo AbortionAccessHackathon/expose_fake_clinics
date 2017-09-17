@@ -8,6 +8,7 @@ function seedEverything() {
   const seeded = {
     users: users(),
     things: things(),
+    centers: centers(),
   }
 
   seeded.favorites = favorites(seeded)
@@ -66,6 +67,34 @@ const favorites = seed(Favorite,
     },
   })
 )
+
+const centers = seed(Center, {
+  bridgeToLife: {
+    name: 'The Bridge to Life',
+    address: '3519 James St., Syracuse, NY, 13206',
+    yelpUrl: 'https://www.yelp.com/biz/new-hope-family-services-syracuse'
+  },
+  avail: {
+    name: 'Avali NYC',
+    address: '115 W. 45​th​ Street, 4​th​ Floor, New York, NY, 10036',
+    yelpUrl: 'https://www.yelp.com/biz/avail-nyc-new-york'
+  },
+  birthright: {
+    name: 'Birthright of Plattsburgh',
+    address: '66 Clinton St., Plattsburgh, NY, 12901',
+    yelpUrl: 'https://www.yelp.com/biz/avail-nyc-new-york'
+  },
+  resourceServies: {
+    name: 'Pregnancy Resource Services',
+    address: '1152 Victory Blvd., Staten Island, NY, 10301',
+    yelpUrl: 'https://www.yelp.com/biz/pregnancy-resource-services-staten-island'
+  },
+  liferight: {
+    name: 'Liferight',
+    address: '870 Arsenal Street, Watertown, NY, 13601',
+    yelpUrl: 'https://www.yelp.com/biz/liferight-of-watertown-watertown'
+  }
+})
 
 if (module === require.main) {
   db.didSync
@@ -135,4 +164,4 @@ function seed(Model, rows) {
   }
 }
 
-module.exports = Object.assign(seed, {users, things, favorites})
+module.exports = Object.assign(seed, {users, things, favorites, centers})

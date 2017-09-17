@@ -17,16 +17,11 @@ module.exports = db => db.define('centers', {
             notEmpty: true
         }
     },
-    url: {
+    yelpUrl: {
         type: TEXT,
-        allownull: false,
-        validate: {
-            notEmpty: true
-        }
     },
     starRating: {
         type: FLOAT,
-        allowNull: false,
         validate: {
             min: 0,
             max: 5
