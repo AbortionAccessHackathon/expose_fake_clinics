@@ -27,14 +27,21 @@ export default class BonesJokes extends Component {
     super(props)
     this.state = {
       pageTitle: 'Start Now',
-      currentDirectionNode: directionNodes.verifyClinicPage({name: 'test', address: '123 address st'})
+      currentDirectionNode: directionNodes.verifyClinicPage({name: 'test', address: '123 address st'}),
+      currentCenter: {}
     }
   }
 
   componentDidMount() {
     axios.get('/api/centers')
     .then((response) => {
-      console.log('PIKACHU', response);
+      const centers = response.data
+      const randomIndex = Math.floor(Math.random() * (centers.length))
+      const randomClinic = centers[randomIndex]
+      this.setState({
+        currentDirectionNode: directionNodes.verifyClinicPage(randomClinic),
+        currentCenter: randomClinic
+      })
     })
     .catch((error) => {
       console.log('PSYDUCK', error);
@@ -48,9 +55,8 @@ export default class BonesJokes extends Component {
   render() {
     const currentNode = this.state.currentDirectionNode || {}
     const setCurrentNode = this.setCurrentDirectionNode
+    const currentCenter = this.state.currentCenter
     if (!this.state) { return null }
-
-    console.log('CHARMANDER', currentNode)
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
@@ -58,7 +64,7 @@ export default class BonesJokes extends Component {
           <GridList padding={1} cols={3} cellHeight='auto'>
             <GridTile style={styles.gridTitleLeft}  cols={2}>
               <Iframe
-                url="https://www.yelp.com/biz/avail-nyc-new-york"
+                url={currentCenter.yelpUrl}
                 width="450px"
                 height="450px"
                 display="initial"
