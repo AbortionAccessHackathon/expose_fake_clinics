@@ -3,9 +3,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
   button: {
-    margin:12,
-    background-color: #4CAF50,
-    border: 2px solid #0000FF;
+    margin: 12,
+    backgroundColor: '#4CAF50',
+    border: '2px solid #0000FF'
   }
 }
 
