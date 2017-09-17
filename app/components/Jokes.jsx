@@ -8,11 +8,10 @@ import UserInterface from './UserInterface.jsx'
 
 const styles = {
   root: {
-
     marginTop: '20px'
   },
   gridList: {
-        display: 'flex',
+    display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     width: 800,
@@ -20,7 +19,7 @@ const styles = {
     overflowY: 'auto',
   },
   gridTitleLeft: {
-    flexGrow: 2
+    flexGrow: 3
   },
   gridTitleRight: {
     flexGrown: 1
